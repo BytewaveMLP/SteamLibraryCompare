@@ -55,4 +55,4 @@ Games in common
 
 ## License
 
-Copyright (c) Eliot Partridge, 2020. Licensed under [the MIT License](/LICENSE).
+Copyright (c) Eliot Partridge, 2021. Licensed under [the MIT License](/LICENSE).
