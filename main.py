@@ -5,7 +5,7 @@ import steamid
 
 parser = argparse.ArgumentParser(description="Look up and compare Steam users' libraries")
 parser.add_argument('--api-key', type=str, dest='apikey', required=True, help='Your Steam API key; see https://steamcommunity.com/dev/apikey')
-parser.add_argument('steamids', type=str, nargs='+', help='The Steam IDs to retrieve. Accepts any format (vanity URL, Steam ID, SteamID64, etc)')
+parser.add_argument('steamid', type=str, nargs='+', help='A Steam ID to add to the comparison list. Accepts any format (vanity URL, Steam ID, SteamID64, etc)')
 args = parser.parse_args()
 
 apikey = args.apikey
