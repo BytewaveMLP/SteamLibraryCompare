@@ -112,7 +112,7 @@ def print_games(games: set[tuple[int, str]]):
 		print(f' - {game[1]}')
 	print()
 
-steamids = [convert_to_steamid64(sid) for sid in args.steamids]
+steamids = [convert_to_steamid64(sid) for sid in args.steamid]
 steamid_names = get_names_from_steamids(steamids)
 steamid_games = { steamid: get_games_for_steamid(steamid) for steamid in steamids }
 common_games = set.intersection(*steamid_games.values())
