@@ -2,6 +2,7 @@ from collections.abc import Iterable
 import requests
 import argparse
 import steamid
+import urllib
 
 parser = argparse.ArgumentParser(description="Look up and compare Steam users' libraries")
 parser.add_argument('--api-key', type=str, dest='apikey', required=True, help='Your Steam API key; see https://steamcommunity.com/dev/apikey')
@@ -80,6 +81,14 @@ def convert_to_steamid64(possible_steamid: str) -> str:
 	str
 		The 64-bit Steam ID of the found user
 	"""
+	as_url = urllib.parse.urlparse(possible_steamid)
+	if as_url.scheme in ['http', 'https'] and as_url.netloc == 'steamcommunity.com':
+		path_components = [c for c in as_url.path.split('/') if c != '']
+		if len(path_components) == 2 and path_components[0] in ['profiles', 'id']:
+			possible_steamid = path_components[1]
+		else:
+			raise RuntimeError('Invalid Steam URL format: ' + possible_steamid)
+
 	try:
 		sid = steamid.SteamID(possible_steamid)
 		return sid.toString()
